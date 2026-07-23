@@ -3,7 +3,7 @@ The Opportune Interview Simulator
 
 Kairós (from the ancient Greek word for the right, critical, or opportune moment) is an AI-powered interview simulator that helps job seekers practice and perfect their responses under realistic pressure. Upload your résumé, get dynamically generated questions, and engage in a real‑time mock interview with an AI hiring manager – all within a sleek, responsive web app.
 
-Live Demo: [https://kairos-nine-lac.vercel.app/](https://kairos-nine-lac.vercel.app/)
+Live Demo: `[INSERT_AWS_URL_HERE]`
 
 ---
 
@@ -26,7 +26,7 @@ The result: you walk into your real interview confident and prepared – ready t
 - Live Interview Mode – Role‑played AI hiring manager asks one question at a time; your answers are streamed and evaluated.
 - Real‑time Feedback– After each answer, get constructive feedback on clarity, relevance, and missing keywords.
 - Responsive Design – Built with Tailwind CSS, works flawlessly on desktop, tablet, and mobile.
-- Supabase Integration – Securely store user profiles, résumé data, and interview history (optional).
+- Supabase Integration – Securely store user profiles, résumé data, and interview history.
 - Streaming Responses – See AI answers type out letter‑by‑letter for a natural conversation feel.
 
 ---
@@ -36,9 +36,9 @@ The result: you walk into your real interview confident and prepared – ready t
 | Layer                | Technology                                                                 |
 |----------------------|----------------------------------------------------------------------------|
 |   Frontend           | React 18, TypeScript, Vite, Tailwind CSS                                   |
-|   Backend (BaaS)     | Supabase (PostgreSQL, Auth, Storage)                                       |
-|   AI / LLM           | OpenAI GPT‑4o‑mini / Anthropic Claude 3 Haiku (via Supabase Edge Functions or direct API) |
-|   Deployment         | Vercel (Frontend) + Supabase (Backend)                                     |
+|   Backend (BaaS)     | Supabase (PostgreSQL, Auth, Session Storage)                               |
+|   AI / LLM           | Google Gemini 3.5 Flash (Primary) / OpenAI GPT-4o-mini (Backup Fallback)   |
+|   Deployment         | AWS Amplify (Frontend) + Supabase (Backend)                                |
 |   Package Manager    | npm                                                                        |
 |   Linting            | ESLint, TypeScript‑ESLint                                                  |
 
@@ -51,13 +51,13 @@ The result: you walk into your real interview confident and prepared – ready t
 - Node.js (v18 or later)
 - npm or yarn
 - A Supabase account (free tier works)
-- An API key for your chosen LLM provider (OpenAI or Anthropic)
+- An API key for your chosen LLM provider (Google Gemini or OpenAI)
 
 ### Installation
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/kairos.git
+   git clone https://github.com/shreyakargutkar/kairos.git
    cd kairos
    ```
 
@@ -71,8 +71,8 @@ The result: you walk into your real interview confident and prepared – ready t
    ```env
    VITE_SUPABASE_URL=your-supabase-url
    VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
-   VITE_OPENAI_API_KEY=your-openai-api-key   # if using OpenAI directly
-   # or use Supabase Edge Functions to proxy the LLM call
+   VITE_GEMINI_API_KEY=your-google-gemini-api-key   # Primary (Free developer tier)
+   VITE_OPENAI_API_KEY=your-openai-api-key       # Optional (Backup fallback)
    ```
    > **Security Note:** Never commit `.env` to version control. The `.env` is already listed in `.gitignore`.
 
