@@ -119,22 +119,19 @@ The result: you walk into your real interview confident and prepared – ready t
 
 ##  Deployment :
 
-### Deploy to Vercel (Recommended)
+### Deploy to AWS Amplify (Recommended)
 
 1. Push your code to a GitHub repository.
-2. Go to [Vercel](https://vercel.com) and import your repository.
-3. Add the same environment variables (`VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`, etc.) in the Vercel project settings.
-4. Deploy – Vercel will automatically build and host your app.
-
-### Deploy to Netlify / Render
-
-Similar steps; just ensure environment variables are set in the respective dashboard.
+2. Go to the [AWS Amplify Console](https://console.aws.aws.com/amplify).
+3. Connect your GitHub repository and select the `main` branch.
+4. Add the required environment variables under **Environment variables** (e.g. `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`, and `VITE_GEMINI_API_KEY`).
+5. Deploy – AWS Amplify will automatically build and host your application.
 
 ---
 
 ##  Security & Best Practices :
 
-- **Never expose API keys** in client‑side code. All LLM calls should be proxied through a secure backend (Supabase Edge Functions, Vercel Serverless Functions, or a dedicated backend).
+- **Never expose API keys** in client‑side code directly on version control. All API keys should be stored in environment variables (configured via AWS Amplify dashboard).
 - **Supabase Row Level Security (RLS)** is enforced to ensure users can only access their own data.
 - All user‑submitted content is sanitized before being sent to the LLM.
 - Budget alerts are configured for the LLM API to prevent unexpected costs.
